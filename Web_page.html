@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Keysight Credit Collection Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background:#f4f6fb;
+    margin:0;
+}
+
+.header{
+    background:#2b3a67;
+    color:white;
+    padding:20px;
+    text-align:center;
+    font-size:26px;
+    font-weight:bold;
+}
+
+.container{
+    width:90%;
+    margin:auto;
+}
+
+.cards{
+    display:flex;
+    justify-content:space-between;
+    margin-top:20px;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    width:23%;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+.card h3{
+    margin:0;
+    color:#777;
+}
+
+.card p{
+    font-size:28px;
+    font-weight:bold;
+    margin-top:10px;
+}
+
+.table-section{
+    margin-top:30px;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th,td{
+    padding:12px;
+    text-align:left;
+    border-bottom:1px solid #ddd;
+}
+
+th{
+    background:#f2f2f2;
+}
+
+.status-good{
+    color:green;
+    font-weight:bold;
+}
+
+.status-risk{
+    color:red;
+    font-weight:bold;
+}
+
+.status-medium{
+    color:orange;
+    font-weight:bold;
+}
+
+.chart-box{
+    margin-top:30px;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+Keysight Customer Credit Collection Dashboard
+</div>
+
+<div class="container">
+
+<div class="cards">
+
+<div class="card">
+<h3>Total Customers</h3>
+<p>128</p>
+</div>
+
+<div class="card">
+<h3>Pending Amount</h3>
+<p>$2.4M</p>
+</div>
+
+<div class="card">
+<h3>Collected</h3>
+<p>$1.6M</p>
+</div>
+
+<div class="card">
+<h3>High Risk Accounts</h3>
+<p>14</p>
+</div>
+
+</div>
+
+<div class="table-section">
+
+<h2>Customer Credit Score List</h2>
+
+<table>
+
+<tr>
+<th>Customer</th>
+<th>Credit Score</th>
+<th>Accuracy</th>
+<th>Past Due Amount</th>
+<th>Status</th>
+</tr>
+
+<tr>
+<td>ABC Telecom</td>
+<td>820</td>
+<td>97%</td>
+<td>$12,000</td>
+<td class="status-good">Low Risk</td>
+</tr>
+
+<tr>
+<td>Global Networks</td>
+<td>650</td>
+<td>90%</td>
+<td>$56,000</td>
+<td class="status-medium">Medium Risk</td>
+</tr>
+
+<tr>
+<td>SignalWave Systems</td>
+<td>520</td>
+<td>85%</td>
+<td>$120,000</td>
+<td class="status-risk">High Risk</td>
+</tr>
+
+<tr>
+<td>Nova Instruments</td>
+<td>740</td>
+<td>94%</td>
+<td>$18,500</td>
+<td class="status-good">Low Risk</td>
+</tr>
+
+</table>
+
+</div>
+
+<div class="chart-box">
+
+<h2>Credit Score Distribution</h2>
+
+<canvas id="creditChart"></canvas>
+
+</div>
+
+</div>
+
+<script>
+
+const ctx = document.getElementById('creditChart');
+
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Excellent (750+)', 'Good (700-749)', 'Average (600-699)', 'Risky (<600)'],
+        datasets: [{
+            label: 'Customers',
+            data: [40, 35, 32, 21],
+            backgroundColor: [
+                '#4CAF50',
+                '#2196F3',
+                '#FFC107',
+                '#F44336'
+            ]
+        }]
+    },
+    options: {
+        responsive: true
+    }
+});
+
+</script>
+
+</body>
+</html>
